@@ -23,41 +23,33 @@ public enum MDMReportingType: String {
 public class ClientReporting : NSObject{
     public static var hostAddress:String = "http://192.168.11.9/"
     
-    public class func reportJailbreak(){
+    public class func reportJailbreak(callback:(Response<AnyObject, NSError>) -> Void){
         var parameter:Dictionary = Dictionary<String,AnyObject>()
         parameter["type"] = MDMReportingType.Jailbreak.rawValue
-
-        Alamofire.request(.GET, hostAddress + MDMType.Reporting.rawValue , parameters: nil)
-            .responseJSON { response in
-            print(response.response) // URL response
-            print(response.data)     // server data
-            print(response.result)   // result of response serialization
-        }
+        report(hostAddress + MDMType.Reporting.rawValue, parameters: parameter, callback: callback)
     }
     
-    public class func reportDebugger(){
+    public class func reportDebugger(callback:(Response<AnyObject, NSError>) -> Void){
         var parameter:Dictionary = Dictionary<String,AnyObject>()
         parameter["type"] = MDMReportingType.Debugger.rawValue
-        
-        Alamofire.request(.GET, hostAddress + MDMType.Reporting.rawValue , parameters: nil)
-            .responseJSON { response in
-            print(response.response) // URL response
-            print(response.data)     // server data
-            print(response.result)   // result of response serialization
-        }
+        report(hostAddress + MDMType.Reporting.rawValue, parameters: parameter, callback: callback)
     }
     
-    public class func reportLocation(){
+    public class func reportLocation(callback:(Response<AnyObject, NSError>) -> Void){
         var parameter:Dictionary = Dictionary<String,AnyObject>()
         parameter["type"] = MDMReportingType.Location.rawValue
         parameter["lat"] = 50
         parameter["lon"] = 50
-        
-        Alamofire.request(.GET, hostAddress + MDMType.Reporting.rawValue , parameters: nil)
+        report(hostAddress + MDMType.Reporting.rawValue, parameters: parameter, callback: callback)
+    }
+    
+    class func report(api:String , parameters:[String: AnyObject] , callback:(Response<AnyObject, NSError>) -> Void){
+        Alamofire.request(.GET, api , parameters: parameters)
             .responseJSON { response in
             print(response.response) // URL response
             print(response.data)     // server data
             print(response.result)   // result of response serialization
+            callback(response)
         }
     }
 }
