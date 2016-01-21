@@ -20,33 +20,34 @@ public enum MDMReportingType: String {
 }
 
 
-public class ClientReporting {
-    public var hostAddress:String = "http://192.168.11.9/"
-    init (){
-        
-    }
+public class ClientReporting : NSObject{
+    public static var hostAddress:String = "http://192.168.11.9/"
     
-    public func reportJailbreak(){
+    public class func reportJailbreak(){
         var parameter:Dictionary = Dictionary<String,AnyObject>()
         parameter["type"] = MDMReportingType.Jailbreak.rawValue
 
         Alamofire.request(.GET, hostAddress + MDMType.Reporting.rawValue , parameters: nil)
             .responseJSON { response in
-                
+            print(response.response) // URL response
+            print(response.data)     // server data
+            print(response.result)   // result of response serialization
         }
     }
     
-    public func reportDebugger(){
+    public class func reportDebugger(){
         var parameter:Dictionary = Dictionary<String,AnyObject>()
         parameter["type"] = MDMReportingType.Debugger.rawValue
         
         Alamofire.request(.GET, hostAddress + MDMType.Reporting.rawValue , parameters: nil)
             .responseJSON { response in
-                
+            print(response.response) // URL response
+            print(response.data)     // server data
+            print(response.result)   // result of response serialization
         }
     }
     
-    public func reportLocation(){
+    public class func reportLocation(){
         var parameter:Dictionary = Dictionary<String,AnyObject>()
         parameter["type"] = MDMReportingType.Location.rawValue
         parameter["lat"] = 50
@@ -54,7 +55,9 @@ public class ClientReporting {
         
         Alamofire.request(.GET, hostAddress + MDMType.Reporting.rawValue , parameters: nil)
             .responseJSON { response in
-                
+            print(response.response) // URL response
+            print(response.data)     // server data
+            print(response.result)   // result of response serialization
         }
     }
 }
