@@ -27,24 +27,24 @@ public class ClientReporting : NSObject{
         var parameter:Dictionary = Dictionary<String,AnyObject>()
         parameter["type"] = MDMReportingType.Jailbreak.rawValue
 
-        Alamofire.request(.GET, hostAddress + MDMType.Reporting.rawValue , parameters: nil)
-            .responseJSON { response in
-            print(response.response) // URL response
-            print(response.data)     // server data
-            print(response.result)   // result of response serialization
-        }
+//        Alamofire.request(.GET, hostAddress + MDMType.Reporting.rawValue , parameters: nil)
+//            .responseJSON { response in
+//            print(response.response) // URL response
+//            print(response.data)     // server data
+//            print(response.result)   // result of response serialization
+//        }
     }
     
     public class func reportDebugger(){
         var parameter:Dictionary = Dictionary<String,AnyObject>()
         parameter["type"] = MDMReportingType.Debugger.rawValue
         
-        Alamofire.request(.GET, hostAddress + MDMType.Reporting.rawValue , parameters: nil)
-            .responseJSON { response in
-            print(response.response) // URL response
-            print(response.data)     // server data
-            print(response.result)   // result of response serialization
-        }
+//        Alamofire.request(.GET, hostAddress + MDMType.Reporting.rawValue , parameters: nil)
+//            .responseJSON { response in
+//            print(response.response) // URL response
+//            print(response.data)     // server data
+//            print(response.result)   // result of response serialization
+//        }
     }
     
     public class func reportLocation(){
@@ -53,11 +53,11 @@ public class ClientReporting : NSObject{
         parameter["lat"] = 50
         parameter["lon"] = 50
         
-        Alamofire.request(.GET, hostAddress + MDMType.Reporting.rawValue , parameters: nil)
-            .responseJSON { response in
-            print(response.response) // URL response
-            print(response.data)     // server data
-            print(response.result)   // result of response serialization
-        }
+//        Alamofire.request(.GET, hostAddress + MDMType.Reporting.rawValue , parameters: nil)
+//            .responseJSON { response in
+//            print(response.response) // URL response
+//            print(response.data)     // server data
+//            print(response.result)   // result of response serialization
+//        }
     }
 }
