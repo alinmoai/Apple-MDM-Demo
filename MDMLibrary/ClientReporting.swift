@@ -5,7 +5,7 @@
 //  Created by jeffwang on 2016/1/20.
 //  Copyright © 2016年 jeffwang. All rights reserved.
 //
-import Alamofire
+//import Alamofire
 import Foundation
 
 public enum MDMType: String {
